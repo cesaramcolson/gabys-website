@@ -36,6 +36,25 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
+def create_admin_if_not_exists(app):
+    with app.app_context():
+        from api.models import User  # importar aquí para evitar errores circulares
+        admin_email = "badragabriela1@gmail.com"
+        admin_password = "IloveJoeJonas<3"
+
+        existing_admin = User.query.filter_by(email=admin_email).first()
+        if not existing_admin:
+            admin = User(email=admin_email, is_admin=True)
+            admin.set_password(admin_password)
+            db.session.add(admin)
+            db.session.commit()
+            print("✅ Usuario admin creado.")
+        else:
+            print("ℹ️ Usuario admin ya existe.")
+
+if ENV == "development":
+    create_admin_if_not_exists(app)
+
 # add the admin
 setup_admin(app)
 
