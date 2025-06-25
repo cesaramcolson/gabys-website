@@ -11,7 +11,7 @@ export const Footer = () => {
 				</p>
 				<div className="mb-3">
 					<a
-						href="https://www.instagram.com/gaby" // reemplazar con real
+						href="https://www.instagram.com/gabrielatbadra/"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-light mx-2"
@@ -19,7 +19,7 @@ export const Footer = () => {
 						<i className="fab fa-instagram fa-lg"></i>
 					</a>
 					<a
-						href="https://twitter.com/gaby" // reemplazar con el real
+						href="https://x.com/BadraGabriela"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-light mx-2"
