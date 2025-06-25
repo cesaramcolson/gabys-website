@@ -1,10 +1,44 @@
-import React, { Component } from "react";
+import React from "react";
 
-export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
-	</footer>
-);
+export const Footer = () => {
+	const year = new Date().getFullYear();
+
+	return (
+		<footer className="footer mt-auto py-4 text-center bg-dark text-light">
+			<div className="container">
+				<p className="mb-2">
+					Follow Gaby on:
+				</p>
+				<div className="mb-3">
+					<a
+						href="https://www.instagram.com/gaby" // reemplazar con real
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-light mx-2"
+					>
+						<i className="fab fa-instagram fa-lg"></i>
+					</a>
+					<a
+						href="https://twitter.com/gaby" // reemplazar con real
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-light mx-2"
+					>
+						<i className="fab fa-twitter fa-lg"></i>
+					</a>
+					<a
+						href="https://www.linkedin.com/in/gaby" // reemplazar con real
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-light mx-2"
+					>
+						<i className="fab fa-linkedin fa-lg"></i>
+					</a>
+				</div>
+				<p className="mb-0">
+					&copy; {year} Gaby's Universe. All rights reserved.
+				</p>
+			</div>
+		</footer>
+	);
+};
