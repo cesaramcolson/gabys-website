@@ -19,12 +19,13 @@ export const Footer = () => {
 						<i className="fab fa-instagram fa-lg"></i>
 					</a>
 					<a
-						href="https://twitter.com/gaby" // reemplazar con real
+						href="https://twitter.com/gaby" // reemplazar con el real
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-light mx-2"
+						title="Follow on X"
 					>
-						<i className="fab fa-twitter fa-lg"></i>
+						<span style={{ fontWeight: "bold", fontSize: "1.2rem" }}>X</span>
 					</a>
 					<a
 						href="https://www.linkedin.com/in/gaby" // reemplazar con real
