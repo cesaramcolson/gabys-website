@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Subscriber
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token
 
 api = Blueprint('api', __name__)
 CORS(api)
+
+
+######Adimin Routes######
 
 @api.route("/api/login", methods=["POST"])
 def login():
@@ -19,3 +22,24 @@ def login():
 
     access_token = create_access_token(identity=user.id)
     return jsonify({"token": access_token, "user": user.serialize()}), 200
+
+
+##### Subscriber Routes #####
+
+@api.route("/api/subscribe", methods=["POST"])
+def subscribe():
+    data = request.get_json()
+    email = data.get("email")
+    name = data.get("name")
+
+    if not email:
+        return jsonify({"msg": "Email is required"}), 400
+
+    if Subscriber.query.filter_by(email=email).first():
+        return jsonify({"msg": "You are already subscribed"}), 409
+
+    subscriber = Subscriber(email=email, name=name)
+    db.session.add(subscriber)
+    db.session.commit()
+
+    return jsonify({"msg": "Subscription successful"}), 201
