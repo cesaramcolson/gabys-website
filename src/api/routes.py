@@ -10,6 +10,11 @@ CORS(api)
 
 ######Adimin Routes######
 
+@api.route("/admin/users", methods=["GET"])
+def get_admin_users():
+    users = User.query.filter_by(is_admin=True).all()
+    return jsonify([u.serialize() for u in users]), 200
+
 @api.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
@@ -25,6 +30,11 @@ def login():
 
 
 ##### Subscriber Routes #####
+
+@api.route("/subscribers", methods=["GET"])
+def get_subscribers():
+    subscribers = Subscriber.query.all()
+    return jsonify([s.serialize() for s in subscribers]), 200
 
 @api.route("/subscribe", methods=["POST"])
 def subscribe():
