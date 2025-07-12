@@ -10,7 +10,7 @@ CORS(api)
 
 ######Adimin Routes######
 
-@api.route("/api/login", methods=["POST"])
+@api.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
     email = data.get("email")
@@ -26,7 +26,7 @@ def login():
 
 ##### Subscriber Routes #####
 
-@api.route("/api/subscribe", methods=["POST"])
+@api.route("/subscribe", methods=["POST"])
 def subscribe():
     data = request.get_json()
     email = data.get("email")
